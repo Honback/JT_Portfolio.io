@@ -1,0 +1,24 @@
+@import url(./Netflix_Project/styles/reset.css);
+@import url(./Netflix_Project/styles/variables.css);
+
+body {
+  background: #000;
+}
+
+header {
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  & > nav {
+    width: 900px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+    .logo {
+      img {
+        height: 50px;
+      }
+    }
+  }
+}

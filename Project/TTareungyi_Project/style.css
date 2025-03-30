@@ -1,0 +1,331 @@
+/* 기본 스타일 */
+body {
+  background: #333;
+  font-family: "Noto Sans KR", Arial, sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* 링크 스타일 */
+a {
+  text-decoration: none;
+  color: indianred;
+}
+
+/* 지도 스타일 */
+#map {
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+
+#map.blur {
+  filter: blur(5px);
+  opacity: 0.5;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* 사이드바 스타일 */
+#sidebar {
+  position: fixed;
+  left: -300px;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  color: black;
+  transition: left 0.3s;
+  padding-top: 90px;
+  z-index: 1000;
+}
+
+#sidebar.active {
+  left: 0;
+}
+
+#sidebar .logo {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  width: 240px;
+  height: auto;
+  background: none;
+  border: none;
+  line-height: 40px;
+  font-size: 18px;
+}
+
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+#sidebar ul li {
+  padding: 15px;
+  text-align: left;
+}
+
+#sidebar ul li a {
+  color: black;
+  display: block;
+}
+
+#sidebar ul li:not(.active):hover {
+  background: #ddd;
+}
+
+.menu-toggle {
+  font-weight: bold;
+  font-size: large;
+}
+
+#sidebar .submenu {
+  display: none;
+  background-color: #fff;
+  margin-left: 20px;
+  a {
+    color: #333;
+  }
+}
+/* #sidebar .submenu a {
+  color: #333;
+} */
+
+#sidebar .submenu a:hover {
+  background-color: #ddd;
+}
+
+#sidebar li.active .submenu {
+  display: block;
+}
+
+#closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: black;
+  cursor: pointer;
+}
+
+#openBtn {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  background: #fff;
+  color: black;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* 차트 컨테이너 스타일 */
+#chartContainer {
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20px;
+  text-align: center;
+  z-index: 10;
+  display: none;
+  width: 70%;
+  height: 70%;
+}
+
+/* 슬라이더 스타일 */
+#monthSlider {
+  width: 20%;
+  left: 100px;
+  padding: 10px 0;
+  margin: 20px auto 10px;
+  border-radius: 5px;
+  background: #f0f0f0;
+  cursor: pointer;
+  position: relative;
+  z-index: 11;
+}
+
+#monthLabel {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+  z-index: 11;
+}
+
+/* 차트 스타일 */
+#rentalChart {
+  max-width: 1000px;
+  max-height: 700px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: calc(40% + 80px); /* 슬라이더와 라벨 높이(약 80px)만큼 추가 */
+  left: calc(50% + 150px);
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+/* #sidebar 상태에 따라 차트 위치 조정 */
+#sidebar.active ~ #chartContainer #rentalChart {
+  left: calc(50% + 150px);
+}
+
+#sidebar:not(.active) ~ #chartContainer #rentalChart {
+  left: 50%;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 1024px) {
+  #rentalChart {
+    max-width: 800px;
+    height: 50vh;
+  }
+  #monthSlider {
+    width: 70%;
+  }
+}
+
+@media (max-width: 768px) {
+  #rentalChart {
+    max-width: 600px;
+    height: 40vh;
+  }
+  #monthSlider {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  #rentalChart {
+    max-width: 90%;
+    height: 30vh;
+  }
+  #monthSlider {
+    width: 90%;
+  }
+  #monthLabel {
+    font-size: 14px;
+  }
+}
+
+/* overlaybox_style */
+.overlaybox {
+  position: relative;
+  width: 360px;
+  height: 350px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/box_movie.png")
+    no-repeat;
+  padding: 15px 10px;
+}
+.overlaybox div,
+ul {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.overlaybox li {
+  list-style: none;
+}
+.overlaybox .boxtitle {
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png")
+    no-repeat right 120px center;
+  margin-bottom: 8px;
+}
+.overlaybox .first {
+  position: relative;
+  width: 247px;
+  height: 136px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/thumb.png")
+    no-repeat;
+  margin-bottom: 8px;
+}
+.first .text {
+  color: #fff;
+  font-weight: bold;
+}
+.first .triangle {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 0;
+  left: 0;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/triangle.png")
+    no-repeat;
+  padding: 6px;
+  font-size: 18px;
+}
+.first .movietitle {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 7px 15px;
+  font-size: 14px;
+}
+.overlaybox ul {
+  width: 247px;
+}
+.overlaybox li {
+  position: relative;
+  margin-bottom: 2px;
+  background: #2b2d36;
+  padding: 5px 10px;
+  color: #aaabaf;
+  line-height: 1;
+}
+.overlaybox li span {
+  display: inline-block;
+}
+.overlaybox li .number {
+  font-size: 16px;
+  font-weight: bold;
+}
+.overlaybox li .title {
+  font-size: 13px;
+}
+.overlaybox ul .arrow {
+  position: absolute;
+  margin-top: 8px;
+  right: 25px;
+  width: 5px;
+  height: 3px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/updown.png")
+    no-repeat;
+}
+.overlaybox li .up {
+  background-position: 0 -40px;
+}
+.overlaybox li .down {
+  background-position: 0 -60px;
+}
+.overlaybox li .count {
+  position: absolute;
+  margin-top: 5px;
+  right: 15px;
+  font-size: 10px;
+}
+.overlaybox li:hover {
+  color: #fff;
+  background: #d24545;
+}
+.overlaybox li:hover .up {
+  background-position: 0 0px;
+}
+.overlaybox li:hover .down {
+  background-position: 0 -20px;
+}
